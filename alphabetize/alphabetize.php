@@ -5,7 +5,7 @@
             Route::current()->add("alphabetical/", "alphabetical");
         }
 
-        static function __uninstall($confirm) {
+        static function __uninstall() {
             Route::current()->remove("alphabetical/");
         }
 
