@@ -1,8 +1,14 @@
-sgid ""
+# Chyrp Lite Translation File.
+# Copyright (C) 2015 xenocrat
+# This file is distributed under the same license as the Chyrp Lite package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
 msgstr ""
-"Project-Id-Version: Chyrp v2.5\n"
-"Report-Msgid-Bugs-To: dan@pimley.net\n"
-"POT-Creation-Date: 2014-01-24 21:00+0000\n"
+"Project-Id-Version: Chyrp Lite\n"
+"Report-Msgid-Bugs-To: hello@xenocrat.net\n"
+"POT-Creation-Date: 2015-04-11 19:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FIRST LAST <EMAIL@EXAMPLE.COM>\n"
 "Language-Team: LANGUAGE <EMAIL@EXAMPLE.COM>\n"
@@ -11,14 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: modules/alphabetize/info.yaml:1
+#: alphabetize.php:44
+msgid "Alphabetical"
+msgstr ""
+
+#: info.php:3
 msgid "Alphabetize"
 msgstr ""
 
-#: modules/alphabetize/info.yaml:4
+#: info.php:6
 msgid "Sort the blog index alphabetically."
 msgstr ""
 
-#: modules/alphabetize/alphabetize.php:44
-msgid "Alphabetical"
-msgstr ""
