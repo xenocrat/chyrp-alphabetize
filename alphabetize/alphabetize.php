@@ -27,17 +27,18 @@
                                              WHERE (__post_attributes.value REGEXP '[[:alnum:]]+')");
 
             $ids = array();
+
             foreach ($record->fetchAll() as $entry)
                 $ids[] = $entry['id'];
 
             if (!empty($ids)) {
                 $results = Post::find(array("placeholders" => true,
                                             "where" => array("id" => $ids)));
+
                 usort($results[0], array($this, "sort_alphabetically"));
                 $posts = new Paginator($results, Config::current()->posts_per_page);
-            } else {
+            } else
                 $posts = new Paginator(array());
-            }
 
             $main->display(array("pages/alphabetical", "pages/index"),
                            array("posts" => $posts),
@@ -53,6 +54,7 @@
         private function mb_strcasecmp($str1, $str2, $encoding = null) {
             if (null === $encoding)
                 $encoding = mb_internal_encoding();
+
             $str1 = preg_replace("/[[:punct:]]+/", "", $str1);
             $str2 = preg_replace("/[[:punct:]]+/", "", $str2);
             return substr_compare(mb_strtoupper($str1, $encoding), mb_strtoupper($str2, $encoding), 0);
