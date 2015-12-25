@@ -40,7 +40,7 @@
             } else
                 $posts = new Paginator(array());
 
-            $main->display(array("pages/alphabetical", "pages/index"),
+            $main->display(array("pages".DIR."alphabetical", "pages".DIR."index"),
                            array("posts" => $posts),
                               __("Alphabetical", "alphabetize"));
         }
