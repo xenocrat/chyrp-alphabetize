@@ -10,7 +10,7 @@
         }
 
         public function parse_urls($urls) {
-            $urls["/\/alphabetical\//"] = "/?action=alphabetical";
+            $urls["|/alphabetical/|"] = "/?action=alphabetical";
             return $urls;
         }
 
