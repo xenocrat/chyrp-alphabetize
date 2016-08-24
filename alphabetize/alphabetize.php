@@ -20,16 +20,16 @@
         }
 
         public function main_alphabetical($main) {
-            $record = SQL::current()->query("SELECT __posts.id FROM __posts
-                                             LEFT JOIN __post_attributes
-                                                ON (__posts.id = __post_attributes.post_id
-                                                AND __post_attributes.name = 'title')
-                                             WHERE (__post_attributes.value REGEXP '[[:alnum:]]+')");
+            $query = SQL::current()->select("post_attributes",
+                                            array("post_id"),
+                                            array("name" => "title",
+                                                  "value REGEXP" => "[[:alnum:]]+"),
+                                            array("ORDER BY" => "post_id DESC"))->fetchAll();
 
             $ids = array();
 
-            foreach ($record->fetchAll() as $entry)
-                $ids[] = $entry['id'];
+            foreach ($query as $result)
+                $ids[] = $result['post_id'];
 
             if (!empty($ids)) {
                 $results = Post::find(array("placeholders" => true,
@@ -42,7 +42,7 @@
 
             $main->display(array("pages".DIR."alphabetical", "pages".DIR."index"),
                            array("posts" => $posts),
-                              __("Alphabetical", "alphabetize"));
+                           __("Alphabetical", "alphabetize"));
         }
 
         private function sort_alphabetically($a, $b) {
