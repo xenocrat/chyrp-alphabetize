@@ -1,19 +1,6 @@
 <?php
     
     class Alphabetize extends Modules {
-        static function __install() {
-            Route::current()->add("alphabetical/", "alphabetical");
-        }
-
-        static function __uninstall() {
-            Route::current()->remove("alphabetical/");
-        }
-
-        public function parse_urls($urls) {
-            $urls["|/alphabetical/|"] = "/?action=alphabetical";
-            return $urls;
-        }
-
         public function main_context($context) {
             $context["alphabetize"] = url("alphabetical/");
             return $context;
