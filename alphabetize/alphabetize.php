@@ -1,11 +1,6 @@
 <?php
     
     class Alphabetize extends Modules {
-        public function main_context($context) {
-            $context["alphabetize"] = url("alphabetical/");
-            return $context;
-        }
-
         public function main_alphabetical($main) {
             $query = SQL::current()->select("post_attributes",
                                             array("post_id"),
