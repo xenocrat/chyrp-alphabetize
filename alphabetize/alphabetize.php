@@ -2,16 +2,16 @@
     
     class Alphabetize extends Modules {
         public function main_alphabetical($main) {
-            $query = SQL::current()->select("post_attributes",
-                                            array("post_id"),
-                                            array("name" => "title",
-                                                  "value REGEXP" => "[[:alnum:]]+"),
-                                            array("ORDER BY" => "post_id DESC"))->fetchAll();
+            $results = SQL::current()->select("post_attributes",
+                                              "post_id, value",
+                                              array("name" => "title"),
+                                              array("post_id DESC"))->fetchAll();
 
             $ids = array();
 
-            foreach ($query as $result)
-                $ids[] = $result['post_id'];
+            foreach ($results as $result)
+                if (preg_match("/[[:alnum:]]+/", $result["value"]))
+                    $ids[] = $result["post_id"];
 
             if (!empty($ids)) {
                 $results = Post::find(array("placeholders" => true,
