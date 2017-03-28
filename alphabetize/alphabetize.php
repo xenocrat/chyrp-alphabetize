@@ -18,7 +18,7 @@
                                             "where" => array("id" => $ids)));
 
                 usort($results[0], array($this, "sort_alphabetically"));
-                $posts = new Paginator($results, Config::current()->posts_per_page);
+                $posts = new Paginator($results, $main->post_limit);
             } else
                 $posts = new Paginator(array());
 
