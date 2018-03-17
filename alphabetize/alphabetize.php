@@ -24,7 +24,7 @@
 
             $main->display(array("pages".DIR."alphabetical", "pages".DIR."index"),
                            array("posts" => $posts),
-                           __("Alphabetical", "alphabetize"));
+                           __("Posts in alphabetical order", "alphabetize"));
         }
 
         private function sort_alphabetically($a, $b) {
