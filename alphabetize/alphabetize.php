@@ -9,9 +9,10 @@
 
             $ids = array();
 
-            foreach ($results as $result)
+            foreach ($results as $result) {
                 if (preg_match("/[[:alnum:]]+/", $result["value"]))
                     $ids[] = $result["post_id"];
+            }
 
             if (!empty($ids)) {
                 $results = Post::find(array("placeholders" => true,
@@ -19,8 +20,9 @@
 
                 usort($results[0], array($this, "sort_alphabetically"));
                 $posts = new Paginator($results, $main->post_limit);
-            } else
+            } else {
                 $posts = new Paginator(array());
+            }
 
             $main->display(array("pages".DIR."alphabetical", "pages".DIR."index"),
                            array("posts" => $posts),
@@ -30,7 +32,8 @@
         private function sort_alphabetically($a, $b) {
             $index_a = array_search("title", $a["attribute_names"]);
             $index_b = array_search("title", $b["attribute_names"]);
-            return $this->mb_strcasecmp($a["attribute_values"][$index_a], $b["attribute_values"][$index_b]);
+            return $this->mb_strcasecmp($a["attribute_values"][$index_a],
+                                        $b["attribute_values"][$index_b]);
         }
 
         private function mb_strcasecmp($str1, $str2, $encoding = "UTF-8") {
@@ -40,6 +43,7 @@
             if (!function_exists("mb_strtoupper"))
                 return substr_compare(strtoupper($str1), strtoupper($str2), 0);
 
-            return substr_compare(mb_strtoupper($str1, $encoding), mb_strtoupper($str2, $encoding), 0);
+            return substr_compare(mb_strtoupper($str1, $encoding),
+                                  mb_strtoupper($str2, $encoding), 0);
         }
     }
