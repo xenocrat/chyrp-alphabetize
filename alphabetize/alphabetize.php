@@ -1,7 +1,7 @@
 <?php
     
     class Alphabetize extends Modules {
-        public function main_alphabetical($main) {
+        public function main_alphabetical($main): void {
             $results = SQL::current()->select("post_attributes",
                                               "post_id, value",
                                               array("name" => "title"),
@@ -29,14 +29,14 @@
                            __("Posts in alphabetical order", "alphabetize"));
         }
 
-        private function sort_alphabetically($a, $b) {
+        private function sort_alphabetically($a, $b): int {
             $index_a = array_search("title", $a["attribute_names"]);
             $index_b = array_search("title", $b["attribute_names"]);
             return $this->mb_strcasecmp($a["attribute_values"][$index_a],
                                         $b["attribute_values"][$index_b]);
         }
 
-        private function mb_strcasecmp($str1, $str2, $encoding = "UTF-8") {
+        private function mb_strcasecmp($str1, $str2, $encoding = "UTF-8"): int {
             $str1 = preg_replace("/[[:punct:]]+/", "", $str1);
             $str2 = preg_replace("/[[:punct:]]+/", "", $str2);
 
