@@ -1,8 +1,6 @@
-#. Content-Type: text/plain; charset=UTF-8
-#. Copyright 2019 Daniel Pimley and other contributors.
 #. This file is distributed under the same license as the Chyrp Lite package.
 
-#: modules/alphabetize/alphabetize.php:27
+#: modules/alphabetize/alphabetize.php:39
 msgid "Posts in alphabetical order"
 msgstr ""
 
