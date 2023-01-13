@@ -6,5 +6,6 @@ return array(
     "description"   => __("Sort the blog index alphabetically.", "alphabetize"),
     "author"        => array(
         "name"      => "Daniel Pimley",
-        "url"       => "http://www.pimley.net/")
+        "url"       => "http://www.pimley.net/"
+    )
 );
