@@ -3,10 +3,10 @@
     class Alphabetize extends Modules {
         public function main_alphabetical($main): void {
             $results = SQL::current()->select(
-                "post_attributes",
-                "post_id, value",
-                array("name" => "title"),
-                array("post_id DESC")
+                tables:"post_attributes",
+                fields:array("post_id", "value"),
+                conds:array("name" => "title"),
+                order:array("post_id DESC")
             )->fetchAll();
 
             $ids = array();
@@ -23,7 +23,6 @@
                         "where" => array("id" => $ids)
                     )
                 );
-
                 usort(
                     $results[0],
                     array($this, "sort_alphabetically")
@@ -52,13 +51,6 @@
         private function mb_strcasecmp($str1, $str2, $encoding = "UTF-8"): int {
             $str1 = preg_replace("/[[:punct:]]+/", "", $str1);
             $str2 = preg_replace("/[[:punct:]]+/", "", $str2);
-
-            if (!function_exists("mb_strtoupper"))
-                return substr_compare(
-                    strtoupper($str1),
-                    strtoupper($str2),
-                    0
-                );
 
             return substr_compare(
                 mb_strtoupper($str1, $encoding),
